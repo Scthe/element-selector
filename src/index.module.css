@@ -1,0 +1,11 @@
+.sharedStyles {
+  --max-widget-width: 300px;
+  --transition-len: 0.2s;
+  /* colors */
+  --accent: rgb(204, 20, 131);
+  --accent-light: rgb(236, 60, 165);
+  --bg-white: white;
+  --color-white: white;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  color: #313131;
+}

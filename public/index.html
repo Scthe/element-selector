@@ -5,12 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+
+    <title>JS Element selector demo</title>
+    <meta
+      name="description"
+      content="Select an existing element on the page."
+    />
+
+    <meta
+      property="og:url"
+      content="https://github.com/Scthe/element-selector"
+    />
+    <meta property="og:title" content="JS Element-selector demo" />
+    <meta
+      property="og:description"
+      content="Select an existing element on the page."
+    />
+    <meta property="og:site_name" content="JS Element-selector demo" />
+    <meta name="twitter:card" content="summary" />
+
+    <style>
+      .github-btn {
+        --arrow-sharp: 85%;
+        --transition-len: 0.1s;
+        --transition-interp: cubic-bezier(0.2, 1, 0.8, 1);
+      }
+
+      .github-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(204, 20, 131);
+        clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+        transition-duration: var(--transition-len);
+        transition-timing-function: var(--transition-interp);
+        transition-property: clip-path, background-color;
+      }
+
+      .github-btn:hover::before {
+        clip-path: polygon(
+          0% 0%,
+          var(--arrow-sharp) 0%,
+          100% 50%,
+          var(--arrow-sharp) 100%,
+          0% 100%
+        );
+        background-color: rgb(236, 60, 165);
+      }
+
+      .github-btn > * {
+        position: relative;
+        transition: transform var(--transition-len) var(--transition-interp);
+      }
+
+      .github-btn:hover > * {
+        transform: translate(-4px, 0);
+      }
+    </style>
   </head>
   <body class="flex items-center justify-center" style="background: #edf2f7">
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
+
+    <!-- ########################################### -->
+    <!-- ############### APP SNIPPET ############### -->
+    <!-- ########################################### -->
+    <script src="/snippet.js" defer></script>
+    <!-- ########################################### -->
+    <!-- ############# END APP SNIPPET ############# -->
+    <!-- ########################################### -->
 
     <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
       <header>
@@ -44,40 +112,23 @@
               Brand
             </div>
             <div class="flex items-center justify-end w-full">
-              <button
-                @click="cartOpen = !cartOpen"
-                class="text-gray-600 focus:outline-none mx-4 sm:mx-0"
+              <a
+                href="https://github.com/Scthe/element-selector"
+                class="flex items-center relative mt-4 px-6 py-2 text-white text-sm uppercase font-medium rounded focus:outline-none bg-white github-btn"
               >
+                <span>GitHub</span>
                 <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  class="ml-4"
+                  style="fill: currentColor"
+                  width="24"
+                  height="24"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
                   <path
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  ></path>
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
                 </svg>
-              </button>
-
-              <div class="flex sm:hidden">
-                <button
-                  @click="isOpen = !isOpen"
-                  type="button"
-                  class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                  aria-label="toggle menu"
-                >
-                  <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
-                    <path
-                      fill-rule="evenodd"
-                      d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
+              </a>
             </div>
           </div>
           <nav
@@ -137,205 +188,7 @@
           </div>
         </div>
       </header>
-      <div
-        :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'"
-        class="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300"
-      >
-        <div class="flex items-center justify-between">
-          <h3 class="text-2xl font-medium text-gray-700">Your cart</h3>
-          <button
-            @click="cartOpen = !cartOpen"
-            class="text-gray-600 focus:outline-none"
-          >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-        <hr class="my-3" />
-        <div class="flex justify-between mt-6">
-          <div class="flex">
-            <img
-              class="h-20 w-20 object-cover rounded"
-              src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-              alt=""
-            />
-            <div class="mx-3">
-              <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
-              <div class="flex items-center mt-2">
-                <button
-                  class="text-gray-500 focus:outline-none focus:text-gray-600"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                </button>
-                <span class="text-gray-700 mx-2">2</span>
-                <button
-                  class="text-gray-500 focus:outline-none focus:text-gray-600"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          <span class="text-gray-600">20$</span>
-        </div>
-        <div class="flex justify-between mt-6">
-          <div class="flex">
-            <img
-              class="h-20 w-20 object-cover rounded"
-              src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-              alt=""
-            />
-            <div class="mx-3">
-              <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
-              <div class="flex items-center mt-2">
-                <button
-                  class="text-gray-500 focus:outline-none focus:text-gray-600"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                </button>
-                <span class="text-gray-700 mx-2">2</span>
-                <button
-                  class="text-gray-500 focus:outline-none focus:text-gray-600"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          <span class="text-gray-600">20$</span>
-        </div>
-        <div class="flex justify-between mt-6">
-          <div class="flex">
-            <img
-              class="h-20 w-20 object-cover rounded"
-              src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-              alt=""
-            />
-            <div class="mx-3">
-              <h3 class="text-sm text-gray-600">Mac Book Pro</h3>
-              <div class="flex items-center mt-2">
-                <button
-                  class="text-gray-500 focus:outline-none focus:text-gray-600"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                </button>
-                <span class="text-gray-700 mx-2">2</span>
-                <button
-                  class="text-gray-500 focus:outline-none focus:text-gray-600"
-                >
-                  <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          <span class="text-gray-600">20$</span>
-        </div>
-        <div class="mt-8">
-          <form class="flex items-center justify-center">
-            <input
-              class="form-input w-48"
-              type="text"
-              placeholder="Add promocode"
-            />
-            <button
-              class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-            >
-              <span>Apply</span>
-            </button>
-          </form>
-        </div>
-        <a
-          class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
-        >
-          <span>Chechout</span>
-          <svg
-            class="h-5 w-5 mx-2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
-      </div>
+
       <main class="my-8">
         <div class="container mx-auto px-6">
           <div

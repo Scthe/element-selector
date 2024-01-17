@@ -1,0 +1,137 @@
+.container {
+  --modal-bg: var(--accent);
+  --children-count-color: gray;
+  --padding-h: 5px;
+  width: min(100vw, var(--max-widget-width));
+  overflow: hidden;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  border-top-left-radius: 10px;
+  box-shadow: -2px -2px 11px -3px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  padding: 10px var(--padding-h);
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-white);
+  letter-spacing: 0.5px;
+}
+
+.hierarchyContainer {
+  --level-margin: 15px;
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--bg-white);
+  box-shadow: -2px -2px 11px -3px var(--shadow-color);
+}
+
+.childrenMsg {
+  color: var(--children-count-color);
+  font-size: 0.9em;
+}
+
+.levelIndicator {
+  color: var(--accent);
+  margin-right: 5px;
+}
+
+.footer {
+  padding: 10px var(--padding-h);
+  padding-right: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.closeBtn {
+  color: var(--color-white);
+  padding: 3px 10px;
+  border-radius: 5px;
+  transition: all var(--transition-len);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15%;
+    width: 130%;
+    height: 130%;
+    border-radius: 50%;
+    background-color: var(--accent-light);
+    transform: translateY(100%);
+    transition: transform var(--transition-len);
+  }
+
+  &:hover::before {
+    transform: translateY(-10%);
+  }
+}
+
+.closeBtnText {
+  display: block;
+  position: relative;
+}
+
+.withAppearAnimation {
+  opacity: 0;
+  animation: ModalContentAppear var(--anim-phase-2-len)
+    var(--anim-phase-2-delay) forwards;
+}
+
+.withContainerAnimation {
+  --anim-phase-1-len: var(--transition-len);
+  --anim-phase-2-delay: var(--anim-phase-1-len);
+  --anim-phase-2-len: var(--transition-len);
+  animation: ModalBackgroundAppear var(--anim-phase-2-len)
+    var(--anim-phase-2-delay) forwards;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    /* padding vertical % is taken from width! */
+    padding-bottom: 50%;
+    border-radius: 50%;
+    background: var(--modal-bg);
+    transform: translate(50%, 50%);
+    animation: ModalInitialFill var(--anim-phase-1-len);
+  }
+}
+
+@keyframes ModalContentAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ModalBackgroundAppear {
+  /* only delay matters here */
+  from,
+  to {
+    background-color: var(--modal-bg);
+  }
+}
+
+@keyframes ModalInitialFill {
+  from {
+    width: 0;
+    padding-bottom: 0;
+  }
+
+  to {
+    width: 250%;
+    padding-bottom: 200%;
+  }
+}

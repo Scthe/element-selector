@@ -1,0 +1,11 @@
+.widgetContainer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+
+  &.widgetContainerWithButton {
+    --margin: 15px;
+    right: var(--margin);
+    bottom: var(--margin);
+  }
+}
