@@ -2,12 +2,20 @@
 
 Select an existing element on the page. While might seem niche, I’ve lost count of how many times I had to reimplement this functionality over the years.
 
-**User flow:**
+### User flow
 
 1. Click the purple button in the bottom-right corner.
 2. You are now in element select mode. Hover over page elements and enjoy fancy effects (it's `box-shadow` with a huge spread-radius btw.).
 3. 'Click' some page element to select it.
 4. The button in the bottom-right corner turns into a popup with data about the selected element.
+
+
+
+
+https://github.com/Scthe/element-selector/assets/9325337/625e87de-b0c0-465b-b74c-58155923aaf5
+
+
+
 
 ## Usage
 
