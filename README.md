@@ -1,4 +1,4 @@
-# Element selector
+# Element selector ([DEMO](https://scthe.github.io/element-selector))
 
 Select an existing element on the page. While might seem niche, I’ve lost count of how many times I had to reimplement this functionality over the years.
 
@@ -9,13 +9,7 @@ Select an existing element on the page. While might seem niche, I’ve lost coun
 3. 'Click' some page element to select it.
 4. The button in the bottom-right corner turns into a popup with data about the selected element.
 
-
-
-
 https://github.com/Scthe/element-selector/assets/9325337/625e87de-b0c0-465b-b74c-58155923aaf5
-
-
-
 
 ## Usage
 
@@ -31,3 +25,8 @@ https://github.com/Scthe/element-selector/assets/9325337/625e87de-b0c0-465b-b74c
 - `yarn lint`. Runs linter. It's a small project, but I have no patience to deal with raw JS.
 
 And if I forget yarn commands again: [Yarn recipes](https://yarnpkg.com/getting-started/recipes).
+
+## References
+
+- Example page for tests is from [tailwindcomponents/e-commerce](https://github.com/tailwindcomponents/e-commerce) ([MIT](https://github.com/tailwindcomponents/e-commerce/blob/master/LICENSE.md)).
+- Some animation interpolation curves based on [codrops](https://tympanus.net/codrops/).
