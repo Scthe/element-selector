@@ -1,0 +1,11 @@
+.DS_Store
+*.log
+
+# yarn
+yarn-debug.log*
+yarn-error.log*
+.yarn/unplugged
+
+# custom
+_reference
+build

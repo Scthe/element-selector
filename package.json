@@ -1,0 +1,29 @@
+{
+  "name": "element-selector",
+  "description": "Select an existing element on the page",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Marcin Matuszczyk <marcin1113C@gmail.com>",
+  "homepage": "https://scthe.github.io/element-selector",
+  "repository": "https://github.com/Scthe/element-selector",
+  "main": "src/index.js",
+  "packageManager": "yarn@4.0.2",
+  "scripts": {
+    "start": "yarn clean && node esbuild-script.js --dev",
+    "build": "yarn clean && node esbuild-script.js",
+    "preview": "yarn build && http-server build",
+    "clean": "rimraf ./build/* || true",
+    "lint": "eslint -c .eslintrc.json --ext .jsx,.js src"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1",
+    "preact": "^10.19.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.11",
+    "esbuild-copy-static-files": "^0.1.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "rimraf": "^5.0.5"
+  }
+}
